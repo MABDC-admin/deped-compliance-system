@@ -31,9 +31,23 @@ const studentsRoutes = require('./routes/students');
 // Serve static files from uploads directory
 app.use('/uploads', express.static(UPLOADS_DIR));
 
-// Basic health check
-app.get('/health', (req, res) => {
-    res.json({ status: 'ok', message: 'DepEd Compliance System Backend is running' });
+// Basic health check with DB verification
+app.get('/health', async (req, res) => {
+    try {
+        const dbCheck = await pool.query('SELECT 1');
+        res.json({
+            status: 'ok',
+            database: 'connected',
+            message: 'DepEd Compliance System Backend and Database are running'
+        });
+    } catch (err) {
+        console.error('Health Check Failed:', err);
+        res.status(500).json({
+            status: 'error',
+            database: 'disconnected',
+            message: 'Database connection failed'
+        });
+    }
 });
 
 // Routes

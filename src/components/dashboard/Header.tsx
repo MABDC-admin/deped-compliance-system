@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { SchoolYearSelector } from './SchoolYearSelector';
+import DatabaseStatus from './DatabaseStatus';
 
 interface HeaderProps {
   onNotificationClick: () => void;
@@ -42,7 +43,12 @@ const Header: React.FC<HeaderProps> = ({
               <circle cx="24" cy="12" r="3" fill="#FFC107" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold tracking-wide">School Management System</h1>
+          <div>
+            <h1 className="text-2xl font-bold tracking-wide leading-none">School Management System</h1>
+            <div className="mt-1">
+              <DatabaseStatus />
+            </div>
+          </div>
         </div>
 
         {/* User Profile and Actions */}
