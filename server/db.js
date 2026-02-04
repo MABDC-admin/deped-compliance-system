@@ -10,8 +10,10 @@ const sslConfig = (dbUrl.includes('localhost') ||
     : { rejectUnauthorized: false };
 
 const pool = new Pool({
-    connectionString: dbUrl,
-    ssl: dbUrl ? sslConfig : false
+    connectionString: process.env.DATABASE_URL,
+    ssl: process.env.NODE_ENV === 'production' || process.env.DATABASE_URL.includes('railway')
+        ? { rejectUnauthorized: false }
+        : false
 });
 
 module.exports = {
