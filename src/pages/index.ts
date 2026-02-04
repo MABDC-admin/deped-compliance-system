@@ -1,0 +1,9 @@
+export { default as StudentsPage } from './StudentsPage';
+export { default as TeachersPage } from './TeachersPage';
+export { default as ClassesPage } from './ClassesPage';
+export { default as AttendancePage } from './AttendancePage';
+export { default as EnrollmentPage } from './EnrollmentPage';
+export { default as UserManagementPage } from './UserManagementPage';
+export { default as StudentDashboard } from './StudentDashboard';
+export { default as TeacherDashboard } from './TeacherDashboard';
+export { default as Root } from './Root';

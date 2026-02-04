@@ -1,0 +1,11 @@
+export { default as Sidebar } from './Sidebar';
+export { default as Header } from './Header';
+export { default as StatsCards } from './StatsCards';
+export { default as StudentsOverview } from './StudentsOverview';
+export { default as MonthlyAttendance } from './MonthlyAttendance';
+export { default as UpcomingEvents } from './UpcomingEvents';
+export { default as RecentActivities } from './RecentActivities';
+export { default as ExamResults } from './ExamResults';
+export { default as TeacherOfMonth } from './TeacherOfMonth';
+export { default as NoticeBoard } from './NoticeBoard';
+export { default as BackgroundDecoration } from './BackgroundDecoration';
