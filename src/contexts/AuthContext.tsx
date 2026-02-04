@@ -38,8 +38,8 @@ interface AuthContextType extends AuthState {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const TOKEN_KEY = 'sms_auth_token';
-const USER_KEY = 'sms_user';
+const TOKEN_KEY = 'token';
+const USER_KEY = 'user';
 
 // Admin credentials for direct database authentication
 const ADMIN_EMAIL = 'sottodennis@gmail.com';
@@ -58,20 +58,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const storedUser = localStorage.getItem(USER_KEY) || sessionStorage.getItem(USER_KEY);
 
     if (!storedToken) {
-      // Mock Admin user for development/bypassed mode
-      const mockAdmin: User = {
-        id: 'mock-admin-id',
-        email: 'admin@example.com',
-        firstName: 'System',
-        lastName: 'Administrator',
-        role: 'administrator',
-        status: 'active'
-      };
-
       setState({
-        user: mockAdmin,
-        token: 'mock-token',
-        isAuthenticated: true,
+        user: null,
+        token: null,
+        isAuthenticated: false,
         isLoading: false,
       });
       return;

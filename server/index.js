@@ -19,6 +19,7 @@ app.use(express.json());
 // Import storage utilities and Routes
 const path = require('path');
 const { UPLOADS_DIR } = require('./storage');
+const pool = require('./db');
 const authRoutes = require('./routes/auth');
 const enrollmentRoutes = require('./routes/enrollment');
 const attendanceRoutes = require('./routes/attendance');
@@ -32,7 +33,7 @@ const studentsRoutes = require('./routes/students');
 app.use('/uploads', express.static(UPLOADS_DIR));
 
 // Basic health check with DB verification
-app.get('/health', async (req, res) => {
+app.get('/api/health', async (req, res) => {
     try {
         const dbCheck = await pool.query('SELECT 1');
         res.json({
